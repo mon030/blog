@@ -1,38 +1,59 @@
-
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit" />
-    <title>Oh~</title>
+    <title>~~404~~</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/errors.css" />
     <link rel="shortcut icon" href="/favicon.ico" />
+	<link href="https://fonts.loli.net/css?family=Quicksand:400" rel="stylesheet">
   </head>
   <body>
-    <div class="page">
-      <div class="error">
-        <h1 class="header">
-          <a href="/" class="logo">
-          </a>
-          - 404
-        </h1>
-        <div class="content">
-         <p>
-           <strong>:(  这里等这你来拓荒 …</strong>
-         </p>
-         <p>尊敬的勇士，你的目的地是否正确？</p>
-         <hr>
-         <p>
-           <a href="/">返回首页</a>
-           <span>或者</span>
-           <a href="javascript:;" id="js-history-back">返回上页</a>
-         </p>
-       </div>
-      </div>
-    </div>
-    <script src="js/zap.js"></script>
-    <script src="js/404.js"></script>
+<body><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<style>
+	html,body{background:#000}
+	img.star{transition:all 4s ease 0s;position:fixed}
+</style>
+<script>
+function setsize(){
+	screenWidth=window.innerWidth;
+	screenHeight=window.innerHeight;
+}
+window.onresize=function(){setsize()};
+setsize();
+ids={"created":[],"moved":[]};
+function createStar(){
+	var star=document.createElement('img');
+	var id='star'+Date.now();
+	ids.created.push(id);
+	star.setAttribute('src','image/star.png');
+	star.setAttribute('class','star');
+	star.setAttribute('id',id);
+	star.randomX=Math.floor(screenWidth/2-(Math.random()*screenWidth));
+	star.randomY=Math.floor(Math.random()*screenHeight/2+100);
+	star.style.top='-'+star.randomY+'px';
+	star.style.right=star.randomX+'px';
+	document.body.appendChild(star);
+	setTimeout(function(){moveStar(ids.created.shift())},100);
+	starCreateTimer=setTimeout(function(){createStar()},Math.floor(Math.random()*3000));
+}
+function moveStar(id){
+	ids.moved.push(id);
+	var star=document.getElementById(id);
+	if(screenHeight>screenWidth)moveDis=screenHeight;else moveDis=screenWidth;
+	star.style.top=0-star.randomY+(moveDis*10)+'px';
+	star.style.right=star.randomX+(moveDis/169*216*10)+'px';
+	setTimeout(function(){removeStar(ids.moved.shift())},1100);
+}
+function removeStar(id){
+	document.body.removeChild(document.getElementById(id));
+}
+createStar();
+</script></body>
+<center><h1><font size="7" face="Gisha" color="fffff">: (</h1><br>
+<font size="2" face="FangSong" color="fffff"><br>欧尼酱你走错地方了</center>
+<hr><center>3ON EM</center>
   </body>
 </html>
